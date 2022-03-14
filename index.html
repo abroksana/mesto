@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="page/index.css">
+</head>
+<body class="page-area">
+  <div class="page">
+      <!-- Шапка сайта -->
+    <header class="header">
+      <img src="images/logo.svg" alt="Логотип Место" class="header__logo">
+    </header>
+    <main class="content">
+        <!-- секция Profile -->
+      <section class="profile">
+        <img src="./images/Avatar.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+        <button type="button" class="profile__edit-button">
+          <img src="./images/Edit-Button.svg" alt="редактировать профиль" class="profile__edit-image">
+        </button>
+        <p class="profile__user-description">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-button">
+          <img src="./images/add-button.svg" alt="Добавить место" class="profile__add-image">
+        </button>
+      </section>
+        <!-- секция Elements -->
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="element">
+            <img src="./images/aldebaran.jpg" alt="Альдебаран" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Альдебаран</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/casey-horner.jpg" alt="Кейси Хорнер" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Кейси Хорнер</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/jasper-wilde.jpg" alt="Джаспер Уайлд" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Джаспер Уайлд</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/kristopher-roller.jpg" alt="Кристофер Роллер" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Кристофер Роллер</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/nasa--hI5dX2ObAs.jpg" alt="Фото Наса 1" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Фото Наса 1</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/nasa-rTZW4f02zY8.jpg" alt="Фото Наса 2" class="element__image">
+            <div class="elements__container">
+              <h2 class="elements__title">Фото Наса 2</h2>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+        <!-- Подвал сайта -->
+    <footer class="footer">
+      <p class="footer__copyright">&COPY; 2022 Mesto Russia</p>
+    </footer>
+        <!-- Попап формы -->
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <fieldset class="popup__fieldset">
+          <input type="text" placeholder="Имя" class="popup__input">
+          <input type="text" placeholder="Деятельность" class="popup__input">
+        </fieldset>
+          <button type="submit" class="popup__submit-button">
+            Сохранить
+          </button>
+      </div>
+    </div>
+  </div>
+  <script scr="./scripts/index.js"></script>
+</body>
+</html>
