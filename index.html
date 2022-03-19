@@ -74,7 +74,6 @@
           </li>
         </ul>
       </section>
-
     </main>
         <!-- Подвал сайта -->
     <footer class="footer">
@@ -82,17 +81,17 @@
     </footer>
         <!-- Попап формы -->
     <div class="popup popup_form_edit-profile">
-      <div class="popup__container">
+      <form class="popup__container">
         <button type="button" class="popup__close-button"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <fieldset class="popup__fieldset">
-          <input type="text" placeholder="Имя" class="popup__input form__input_type_name">
-          <input type="text" placeholder="Деятельность" class="popup__input form__input_type_activity">
-        </fieldset>
+        <div class="popup__fieldset">
+          <input type="text" placeholder="Имя" class="popup__input popup__input_type_name">
+          <input type="text" placeholder="Деятельность" class="popup__input popup__input_type_activity">
+        </div>
           <button type="submit" class="popup__submit-button">
             Сохранить
           </button>
-      </div>
+      </form>
     </div>
   </div>
   <script src="./scripts/index.js"></script>

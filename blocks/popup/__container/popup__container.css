@@ -8,3 +8,16 @@
   max-width: 430px;
   padding: 34px 36px 37px;
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .popup__container {
+    width: 85%;
+  }
+}
+
+@media (max-width: 767px) {
+  .popup__container {
+    max-width: 282px;
+    padding: 25px 22px;
+  }
+}

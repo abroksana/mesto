@@ -26,3 +26,34 @@
   top: 0;
   transform: rotate(-45deg);
 }
+
+@media screen and (min-width: 421px) and (max-width: 576px) {
+  .popup__close-button {
+    top: -35px;
+    right: -20px;
+  }
+  .popup__close-button:before {
+    height: 28px;
+    border: 1px solid #FFFFFF;
+  }
+  .popup__close-button:after {
+    height: 28px;
+    border: 1px solid #FFFFFF;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .popup__close-button {
+    top: -36px;
+    right: -5px;
+    padding: 0;
+  }
+  .popup__close-button:before {
+    height: 22px;
+    border: 1px solid #FFFFFF;
+  }
+  .popup__close-button:after {
+    height: 22px;
+    border: 1px solid #FFFFFF;
+  }
+}

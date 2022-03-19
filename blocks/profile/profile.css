@@ -4,22 +4,23 @@
   max-width: 880px;
   margin: 40px auto 0;
 }
-/*
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .lead {
+
+@media (min-width: 921px) and (max-width: 1279px) {
+  .profile {
     max-width: 928px;
     margin-top: 48px;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .lead {
-    margin: 48px auto 88px;
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  .profile {
+    margin: 48px 20px 88px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .lead {
-    margin: 48px auto 64px;
+  .profile {
+    margin: 41px auto 36px;
+    flex-direction: column;
   }
 }
