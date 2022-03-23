@@ -1,59 +1,35 @@
 .popup__close-button {
   position: absolute;
-  right: -38px;
-  top: -43px;
+  right: -40px;
+  top: -40px;
   cursor: pointer;
   border: none;
-  background: none;
   height: 32px;
   width: 32px;
+  background: transparent url(../../../images/Close_Icon_Form_1280.svg);
 }
 
-.popup__close-button:before {
-  position: absolute;
-  content: '';
-  height: 35px;
-  border: 2px solid #FFFFFF;
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.popup__close-button:after {
-  position: absolute;
-  content: '';
-  height: 35px;
-  border: 2px solid #FFFFFF;
-  top: 0;
-  transform: rotate(-45deg);
+.popup__close-button:hover {
+  opacity: .6;
 }
 
 @media screen and (min-width: 421px) and (max-width: 576px) {
   .popup__close-button {
     top: -35px;
     right: -20px;
-  }
-  .popup__close-button:before {
-    height: 28px;
-    border: 1px solid #FFFFFF;
-  }
-  .popup__close-button:after {
-    height: 28px;
-    border: 1px solid #FFFFFF;
+    background-size: 26px;
+    height: 26px;
+    width: 26px;
   }
 }
 
 @media screen and (max-width: 420px) {
   .popup__close-button {
-    top: -36px;
-    right: -5px;
+    top: -35px;
+    right: 0;
     padding: 0;
-  }
-  .popup__close-button:before {
-    height: 22px;
-    border: 1px solid #FFFFFF;
-  }
-  .popup__close-button:after {
-    height: 22px;
-    border: 1px solid #FFFFFF;
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
   }
 }

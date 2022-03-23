@@ -1,12 +1,12 @@
 .profile__add-button {
   width: 150px;
   min-height: 50px;
-  background-color: transparent;
   border: none;
   border: 2px solid #fff;
   border-radius: 2px;
   margin-left: auto;
   cursor: pointer;
+  background: transparent url(../../../images/add-button.svg)  50%/22px no-repeat;
 }
 
 .profile__add-button:hover {
@@ -17,5 +17,7 @@
   .profile__add-button {
     min-width: 282px;
     margin: auto;
+    background-size: 16px;
   }
 }
+
