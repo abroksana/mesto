@@ -4,6 +4,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 20px;
-  min-height: 76px;
   max-width: 246px;
+  padding: 25px 0;
 }
