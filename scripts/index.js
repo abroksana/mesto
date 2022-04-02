@@ -76,7 +76,7 @@ function createCard(cardImage, cardName) {
     popupViewImage.alt = cardName;
     popupViewDesc.textContent = cardName;
 
-    popupOpened(popupView);
+    openPopup(popupView);
   })
 
   return cardElement;
@@ -94,26 +94,26 @@ profileEditBtn.addEventListener('click', function() {
   popupPrflFrmName.value = profileEditName.textContent;
   popupPrflFrmActiv.value = profileEditJob.textContent;
 
-  popupOpened(popupPrflFrm);
+  openPopup(popupPrflFrm);
 })
 
-function popupOpened(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
-function popupClose(popup) {
+function сlosePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
     /*  profile__add-button */
-btnAddNewCard.addEventListener('click', () => popupOpened(popupCardAdd));
+btnAddNewCard.addEventListener('click', () => openPopup(popupCardAdd));
     /* profile__add-button Закрываем попап */
-popupPrflFrmClose.addEventListener('click', () => popupClose(popupPrflFrm));
+popupPrflFrmClose.addEventListener('click', () => сlosePopup(popupPrflFrm));
 
     /* popup__close-button */
-popupCardAddClose.addEventListener('click', () =>  popupClose(popupCardAdd));
+popupCardAddClose.addEventListener('click', () =>  сlosePopup(popupCardAdd));
 
     /* popup_view-image */
-popupViewClose.addEventListener('click', () => popupClose(popupView));
+popupViewClose.addEventListener('click', () => сlosePopup(popupView));
 
 /* Функция формы для изменения профиля */
 function formSubmitHandler (event) {
@@ -121,7 +121,7 @@ function formSubmitHandler (event) {
   profileEditName.textContent = popupPrflFrmName.value;
   profileEditJob.textContent = popupPrflFrmActiv.value;
 
-  popupClose(popupPrflFrm);
+  сlosePopup(popupPrflFrm);
 
   formElement.reset();
 }
@@ -134,7 +134,7 @@ function handleNewCardSubmit(event) {
 
   elementList.prepend(createCard(popupCardAddLink.value, popupCardAddName.value));
 
-  popupClose(popupCardAdd);
+  сlosePopup(popupCardAdd);
   addCardForm.reset();
 }
 
