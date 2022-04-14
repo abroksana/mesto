@@ -76,14 +76,15 @@
         <div class="popup__fieldset">
           <input
             type="text"
-            name="name"
+            id="name-card"
+            name="name-image"
             placeholder="Название"
             class="popup__input popup__input_type_title"
             minlength="2"
             maxlength="30"
             required
           >
-          <span id="name-card-error" class="error"></span>
+          <span id="name-card-error" class="popup__input-error popup__input-error_active"></span>
           <input
             type="url"
             id="link"
@@ -93,7 +94,7 @@
             minlength="2"
             required
           >
-          <span id="link-error" class="error"></span>
+          <span id="link-error" class="popup__input-error popup__input-error_active"></span>
         </div>
           <button type="submit" class="popup__submit-button">
             Сохранить

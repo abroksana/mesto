@@ -6,7 +6,7 @@ const popupPrflFrm = document.querySelector('.popup_form-user');
 const popupPrflFrmName = popupPrflFrm.querySelector('.popup__input_type_name');
 const popupPrflFrmActiv = popupPrflFrm.querySelector('.popup__input_type_activity');
 const popupPrflFrmClose = popupPrflFrm.querySelector('body .popup__close-button');
-const formElement = popupPrflFrm.querySelector('.popup__container');
+const form = popupPrflFrm.querySelector('.popup__container');
 
 const btnAddNewCard = document.querySelector('.profile__add-button');
 
@@ -123,10 +123,10 @@ function formSubmitHandler (event) {
 
   сlosePopup(popupPrflFrm);
 
-  formElement.reset();
+  form.reset();
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+form.addEventListener('submit', formSubmitHandler);
 
 /* Новая карточка из формы */
 function handleNewCardSubmit(event) {
