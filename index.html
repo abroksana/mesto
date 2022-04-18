@@ -39,7 +39,7 @@
       <form name="user" class="popup__container" novalidate>
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <div class="popup__fieldset">
+        <fieldset class="popup__fieldset">
           <input
             type="text"
             id="user-name"
@@ -50,7 +50,7 @@
             maxlength="40"
             required
           >
-          <span class="popup__input-error popup__input-error_active" id="user-name-error" ></span>
+          <span class="popup__input-error" id="user-name-error" ></span>
           <input
             type="text"
             id="user-activity"
@@ -61,11 +61,11 @@
             maxlength="200"
             required
           >
-          <span id="user-activity-error" class="popup__input-error popup__input-error_active"></span>
-        </div>
+          <span id="user-activity-error" class="popup__input-error"></span>
           <button type="submit" class="popup__submit-button">
             Сохранить
           </button>
+        </fieldset>
       </form>
     </div>
         <!-- Попап форма card -->
@@ -73,7 +73,7 @@
       <form name="place" class="popup__container">
         <button type="button" class="popup__close-button" novalidate></button>
         <h2 class="popup__title">Новое место</h2>
-        <div class="popup__fieldset">
+        <fieldset class="popup__fieldset">
           <input
             type="text"
             id="name-card"
@@ -84,7 +84,7 @@
             maxlength="30"
             required
           >
-          <span id="name-card-error" class="popup__input-error popup__input-error_active"></span>
+          <span id="name-card-error" class="popup__input-error"></span>
           <input
             type="url"
             id="link"
@@ -94,11 +94,11 @@
             minlength="2"
             required
           >
-          <span id="link-error" class="popup__input-error popup__input-error_active"></span>
-        </div>
+          <span id="link-error" class="popup__input-error"></span>
           <button type="submit" class="popup__submit-button">
             Сохранить
           </button>
+        </fieldset>
       </form>
     </div>
         <!-- Попап форма image -->
