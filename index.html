@@ -36,7 +36,7 @@
     </footer>
         <!-- Попап форма user -->
     <div class="popup popup_form-user">
-      <form name="user" class="popup__container" novalidate>
+      <form name="user" class="popup__container" id="popup-form-edit" novalidate>
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__fieldset">
@@ -70,8 +70,8 @@
     </div>
         <!-- Попап форма card -->
     <div class="popup popup_form-card">
-      <form name="place" class="popup__container">
-        <button type="button" class="popup__close-button" novalidate></button>
+      <form name="place" class="popup__container" id="popup-form-add" novalidate>
+        <button type="button" class="popup__close-button"></button>
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__fieldset">
           <input
@@ -112,7 +112,7 @@
   </div>
   <template id="card-template">
     <li class="element">
-      <img src="дляТестов" alt="Шаблон фото" class="element__image">
+      <img src="дляТестов" alt="Картинка" class="element__image">
       <div class="element__container">
         <h2 class="element__title"></h2>
         <button type="button" class="element__like-button"></button>
@@ -121,6 +121,6 @@
     </li>
   </template>
   <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <!-- <script src="./scripts/validate.js"></script> -->
 </body>
 </html>
