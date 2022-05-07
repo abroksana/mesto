@@ -48,7 +48,7 @@ export default class Card {
 
     this._elementTitle.textContent = this._name;
     this._elementImage.src = this._link;
-    this._elementImage.alt = 'Фотография местности ' + this._name;
+    this._elementImage.alt = 'Картинка ' + this._name;
     return this._element;
   };
 };
