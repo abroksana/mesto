@@ -14,28 +14,28 @@ const btnAddNewCard = document.querySelector('.profile__add-button');
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Пространство',
+    link: 'https://cdn.pixabay.com/photo/2021/08/14/03/55/galaxy-6544509_960_720.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Галактика',
+    link: 'https://cdn.pixabay.com/photo/2017/04/22/00/14/universe-2250310_960_720.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Планеты фантазия',
+    link: 'https://cdn.pixabay.com/photo/2018/03/04/23/09/astronomy-3199541_960_720.jpg'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Большой взрыв',
+    link: 'https://cdn.pixabay.com/photo/2011/12/15/11/37/galaxy-11188_960_720.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Звездная пыль',
+    link: 'https://cdn.pixabay.com/photo/2020/11/07/01/28/abstract-5719221_960_720.jpg'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Туманность Ориона',
+    link: 'https://cdn.pixabay.com/photo/2011/12/14/12/21/orion-nebula-11107_960_720.jpg'
   }
 ];
 

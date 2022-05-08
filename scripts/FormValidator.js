@@ -7,6 +7,7 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._activeErrorClass = config.activeErrorClass;
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._form.querySelector(this._buttonSubmitClass);
   };
 
   _showInputError(inputElement) {
@@ -51,14 +52,13 @@ export default class FormValidator {
     });
   };
 
-	// Деактивации кнопки сохранить (публичный, используется еще и в index.js)
+	// Деактивации кнопки  (публичный)
 	disableButton() {
-		this._buttonElement = this._form.querySelector(this._buttonSubmitClass);
 		this._buttonElement.disabled = true;
 		this._buttonElement.classList.add(this._disableButtonClass);
 	};
 
-// активация кнопки сохранить при успешном прохождении валидации
+// активация кнопки  (публичный)
   enableButton() {
 		this._buttonElement.disabled = false;
 		this._buttonElement.classList.remove(this._disableButtonClass);
