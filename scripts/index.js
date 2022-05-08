@@ -8,7 +8,6 @@ const profileEditJob = document.querySelector('.profile__user-job')
 const popupPrflFrm = document.querySelector('.popup_form-user');
 const popupPrflFrmName = popupPrflFrm.querySelector('.popup__input_type_name');
 const popupPrflFrmActiv = popupPrflFrm.querySelector('.popup__input_type_activity');
-const popupPrflFrmClose = popupPrflFrm.querySelector('body .popup__close-button');
 const profileForm = popupPrflFrm.querySelector('.popup__container');
 
 const btnAddNewCard = document.querySelector('.profile__add-button');
@@ -41,20 +40,14 @@ const initialCards = [
 ];
 
 const popupCardAdd = document.querySelector('.popup_form-card');
-// const popupCardAddName = popupCardAdd.querySelector('.popup__input_type_title');
-// const popupCardAddLink = popupCardAdd.querySelector('.popup__input_type_link');
-const popupCardAddClose = popupCardAdd.querySelector('body .popup__close-button');
 const formAddCard = popupCardAdd.querySelector('.popup__container');
 
 const popupView = document.querySelector('.popup_view-image');
-const popupViewClose = popupView.querySelector('.popup__close-button');
 const popupViewImage = popupView.querySelector('.popup__image');
 const popupViewDesc = popupView.querySelector('.popup__description');
 
 const elementList = document.querySelector('.elements__list');
 const popups = document.querySelectorAll('.popup');
-const popupAddForm = popupPrflFrm.querySelector('[name="user"]');
-const buttonElement = popupAddForm.querySelector('.popup__submit-button');
 const popupFormAdd = document.querySelector('#popup-form-add');
 const popupFormEdit = document.querySelector('#popup-form-edit');
 
@@ -123,7 +116,7 @@ popups.forEach((popup) => {
 const popupCardAddName = popupCardAdd.querySelector('.popup__input_type_title'); // инпут названия
 const popupCardAddLink = popupCardAdd.querySelector('[name="link-image"]'); // // инпут ссылки / изображения
 
-  /* Отправка формы новой карточки и отслеживание события ('[name="link-image"]'); */
+  /* Отправка формы новой карточки и отслеживание события  */
 formAddCard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   elementList.prepend(createCard({
@@ -134,19 +127,9 @@ formAddCard.addEventListener('submit', (evt) => {
   );
   popupCardAddName.value = '';
   popupCardAddLink.value =  '';
-// name="link-image" name="name-image"
-  // const newCard = {};
-  // newCard.name = popupCardAddName['name-image'].value;
-  // newCard.link = popupCardAddLink['link-image'].value;
-  // addCard(elementList, createCard(item));
-
-  // elementList.prepend(createCard(popupCardAddLink.value, popupCardAddName.value));
   closePopup(popupCardAdd);
-  // formAddCard.reset();
-  // disableButton(evt.currentTarget.querySelector('.popup__submit-button'), validationConfig);
 
-
-  // addPupupValidator.toggleButtonState();
+  addPupupValidator.disableButton();
 });
 
   /* Функция формы для изменения профиля  */
@@ -154,7 +137,6 @@ function handleSubmitForm (event) {
   event.preventDefault();
   profileEditName.textContent = popupPrflFrmName.value;
   profileEditJob.textContent = popupPrflFrmActiv.value;
-
 
   closePopup(popupPrflFrm);
   profileForm.reset();
@@ -166,8 +148,8 @@ profileForm.addEventListener('submit', handleSubmitForm);
 profileEditBtn.addEventListener('click', () => {
   popupPrflFrmName.value = profileEditName.textContent;
   popupPrflFrmActiv.value = profileEditJob.textContent;
-  // enableButton(buttonElement, validationConfig);
-  // editPupupValidator.disabledButton();
+  editPupupValidator.enableButton();
+
   openPopup(popupPrflFrm);
 });
 
@@ -181,5 +163,3 @@ editPupupValidator.enableValidation();
   /*  Валидация для формы карточки */
 const addPupupValidator = new FormValidator(validationConfig, popupFormAdd);
 addPupupValidator.enableValidation();
-
-// export { validationConfig };
