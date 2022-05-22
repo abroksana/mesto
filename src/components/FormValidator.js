@@ -1,4 +1,4 @@
-export default class FormValidator {
+export class FormValidator {
   constructor(config, form) {
     this._form = form;
     this._inputSelector = config.inputSelector;
@@ -42,35 +42,25 @@ export default class FormValidator {
   };
 
   _setEventListeners() {
-    this._toggleButtonState();
+    this.toggleButtonState();
     // обходим все поля ввода и вешаем на них слушатели
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement); // проверям валидность формы
-        this._toggleButtonState(); // проверяем состояние кнопки
+        this.toggleButtonState(); // проверяем состояние кнопки
       });
     });
   };
 
-	// Деактивации кнопки  (публичный)
-	disableButton() {
-		this._buttonElement.disabled = true;
-		this._buttonElement.classList.add(this._disableButtonClass);
-	};
-
-// активация кнопки  (публичный)
-  enableButton() {
-		this._buttonElement.disabled = false;
-		this._buttonElement.classList.remove(this._disableButtonClass);
-	};
-
-	_toggleButtonState() {
-		if (this._hasInvalidInput()) {
-			this.disableButton();
-		} else {
-			this.enableButton();
-		}
-	}
+  toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonElement.disabled = true;
+      this._buttonElement.classList.add(this._disableButtonClass);
+    } else {
+      this._buttonElement.disabled = false;
+      this._buttonElement.classList.remove(this._disableButtonClass);
+    }
+  }
 
 	enableValidation() {
 		this._form.addEventListener('submit', evt => {
@@ -78,5 +68,11 @@ export default class FormValidator {
 		});
 		this._setEventListeners();
 	}
-};
 
+  resetValidation() {
+    this.toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+};
