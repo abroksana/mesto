@@ -2,7 +2,6 @@ class Card {
   constructor(name, link, alt, cardSelector, {handleCardClick}) {
     this._name = name;
     this._link = link;
-    this._alt = alt;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._element = this._getTemplate();
@@ -21,8 +20,8 @@ class Card {
 
   renderCard() {
     this._elementImage.src = this._link;
-    this._elementImage.alt = this._alt;
-    this._element.querySelector('.element__title').textContent = this._name;;
+    this._elementImage.alt = this._name;
+    this._element.querySelector('.element__title').textContent = this._name;
     this._setEventListeners();
 
     return this._element;
