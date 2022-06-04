@@ -1,12 +1,22 @@
 class Card {
-  constructor(name, link, alt, cardSelector, {handleCardClick}) {
-    this._name = name;
-    this._link = link;
-    this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
-    this._element = this._getTemplate();
-    this._elementImage = this._element.querySelector('.element__image');
-    this._placeButtonLike = this._element.querySelector('.element__like-button');
+  constructor(data, actualUserId, cardSelector, {handleCardClick, actionDeleteCardClick, handleLikeClick}) {
+    this._name = data.name; /* название карточки */
+    this._link = data.link; /* ссылка на изображение */
+    this._cardSelector = cardSelector; /* селектор карточки */
+    this._handleCardClick = handleCardClick; /* открытие попапа карточки */
+    this._element = this._getTemplate(); /* запись разметки в поле _element */
+    this._elementImage = this._element.querySelector('.element__image'); /* картинка по селектору */
+
+    this._likes = data.likes ?? []; /* лайки карточек, при их отсутствии применять правую часть*/
+    this._cardId = data._id; /* id карточки */
+    this._mainId = data.main._id; /* id владельца юзера карточки */
+    this._actualUserId = actualUserId; /* актуальный пользователь */
+    this.alt = data.name; /* альт карточки */
+    this._deleteCardButton = this._element.querySelector('.element__#'); /* кнопка удаления карточки */
+    this._placeButtonLike = this._element.querySelector('.element__like-button'); /* кнопка лайка по селектору */
+    this._handleLikeClick = handleLikeClick; /* лайк карточки */
+    this._actionDeleteCardClick = actionDeleteCardClick; /* удаление карточки */
+    this._likesCounter = this._element.querySelector('.element__#'); /* счетчик лайков */
   };
 
     /* Возврат шаблона карточки из DOM */
@@ -19,45 +29,88 @@ class Card {
   };
 
   renderCard() {
-    this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
+    this._elementImage.src = this._link; /* изображение */
+    this._elementImage.alt = this._alt;
     this._element.querySelector('.element__title').textContent = this._name;
-    this._setEventListeners();
+    this._setEventListeners(); /* добавляется обработчик */
+    this._iconCardDeleteIsDisplayed(); /* кнопка удаления */
+    this.upgradeLikes(); /* количество лайков */
 
     return this._element;
   };
 
     /* Слушатели событий */
   _setEventListeners() {
-    this._element.querySelector('.element__btn-trash').addEventListener('click', () => {
-      this._deleteClickHandler();
-    })
-    this._placeButtonLike.addEventListener('click', this._likeClickHandler);
+     /* удаление карточки */
+    this._deleteCardButton.addEventListener('click', () => {
+      this._actionDeleteCardClick(this);
+    });
+    // this._element.querySelector('.element__btn-trash').addEventListener('click', () => {
+    //   this._deleteClickHandler();
+    // }); /* удаление карточки - _deleteCardButton */
+
+    this._placeButtonLike.addEventListener('click', this._likeClickHandler); /* лайк карточки */
+
     this._elementImage.addEventListener('click', () => {
       this._openPopupWithImage();
-    });
+    }); /* открытие попапа карточки */
   };
 
-  /* Удаление карточки из DOM */
-  _deleteClickHandler = () => {
-    this._element.remove();
-  };
+  /* проверка лайков */
+  whenLiked() {
+    return this._likes.some((like) => like._id === this._actualUserId);
+  }
 
-    /* Удаление и удаление на кнопке лайк */
-  _likeClickHandler = () => {
-    this._placeButtonLike.classList.toggle('element__like-button_active');
-  };
+  /* обновление лайков */
+  upgradeLikes() {
+    this._likesCounter.textContent = this._likes.length;
+    if (this.whenLiked()) {
+      this._placeButtonLike.classList.add('element__like-button_active');
+    } else {
+        this._placeButtonLike.classList.remove('element__like-button_active');
+    }
+  }
 
+  /* метод установки лайков */
+  discoverLikesInfo(likes) {
+    this._likes = likes;
+    this.upgradeLikes();
+  }
+
+  //   /* от 8й работы Удаление и удаление на кнопке лайк */
+  // _likeClickHandler = () => {
+  //   this._placeButtonLike.classList.toggle('element__like-button_active');
+  // };
+
+
+
+  /* открытие попапа с карточкой */
   _openPopupWithImage() {
     this._handleCardClick(
       this._name,
       this._link,
     )
   }
+
+    /* если карточка моя, показ кнопки удаления */
+  _iconCardDeleteIsDisplayed() {
+    if (this._mainId === this._actualUserId) {
+      this._deleteCardButton.classList.add('#');
+    } else {
+      this._deleteCardButton.classList.remove('#');
+    }
+  }
+
+  /* Удаление карточки */
+  deleteClickHandler() {
+    this._element.remove();
+    this._element = null;
+  };
+
+  /* id карточки */
+  cardId() {
+    return this._cardId;
+  }
 };
 
 export {Card};
-
-/* Свяжите класс Card c попапом. Сделайте так, чтобы Card
-принимал в конструктор функцию handleCardClick. Эта функция
-должна открывать попап с картинкой при клике на карточку. */

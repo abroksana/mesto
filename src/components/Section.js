@@ -1,15 +1,15 @@
 export class Section {
-  constructor({items, renderer}, containerSelector) {
-    this._items = items; /* это массив данных, которые нужно добавить на страницу при инициализации класса */
+  constructor({renderer}, containerSelector) {
+    // this._items = items; /* это массив данных, которые нужно добавить на страницу при инициализации класса */
     this._renderer = renderer; /* это функция, которая отвечает за создание и отрисовку данных на странице */
     this._container = document.querySelector(containerSelector); /* селектор контейнера, в который нужно добавлять созданные элементы */
   }
 
 /* селектор контейнера, в который нужно добавлять созданные элементы */
 /* Отрисовка каждого отдельного элемента осуществляется функцией renderer */
-  renderItems() {
-    this._items.forEach((items) => {
-      this._renderer(items);
+  renderItems(items) {
+    items.forEach((item) => {
+      this._renderer(item);
     });
   }
 
