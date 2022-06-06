@@ -1,9 +1,3 @@
-  /* карточки с сервера */
-  /* профиль с сервера */
-  /* редактирование профиля */
-  /* добавление карточки */
-  /* удаление карточки */
-
 // import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export class Api {
@@ -12,42 +6,60 @@ export class Api {
     this._token = token;
   }
   /* проверка ошибок */
-  _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  }
+	_checkResponse(res) {
+		if (res.ok) {
+			return res.json();
+		}
+		return Promise.reject(`Error: ${res.status}`);
+	}
   /* карточки с сервера */
+  // getCards() {
+  //   return fetch(`${this._address}/cards`, {
+  //     method: 'GET',
+  //     headers: {
+  //       authorization: this._token,
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //     .then(this._checkResponse)
+  // }
+/* карточки с сервера */
   getCards() {
     return fetch(`${this._address}/cards`, {
       method: 'GET',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(this._checkResponse)
+      headers: this._token,
+    }).then(this._checkResponse);
   }
+
   /* профиль с сервера */
+  // getUser() {
+  //   return fetch(`${this._address}/user/me`, {
+  //     method: 'GET',
+  //     headers: this._token,
+  //     // headers: {
+  //     //   authorization: this._token,
+  //     //   'Content-Type': 'application/json'
+  //     // }
+  //   })
+  //   .then(this._checkResponse)
+  // }
+ /* профиль с сервера */
   getUser() {
-    return fetch(`${this._address}/user/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: 'GET',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(this._checkResponse)
+      headers: this._token,
+    }).then(this._checkResponse);
   }
+
   /* редактирование профиля */
   editProfile(item) {
     return fetch(`${this._address}/user/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // },
       body: JSON.stringify({
         name: item.name,
         about: item.description
@@ -59,10 +71,11 @@ export class Api {
   addNewCard(data) {
     return fetch(`${this._address}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // },
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -74,10 +87,11 @@ export class Api {
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // }
     })
     .then(this._checkResponse)
   }
@@ -85,10 +99,11 @@ export class Api {
   addLike(id) {
     return fetch(`${this._address}/cards/likes${id}`, {
       method: 'PUT',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // }
     })
     .then(this._checkResponse)
   }
@@ -96,10 +111,11 @@ export class Api {
   removelike(id) {
     return fetch(`${this._address}/cards/likes${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      }
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // }
     })
     .then(this._checkResponse)
   }
@@ -107,10 +123,11 @@ export class Api {
   changeUserAvatar(item) {
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: this._token,
-        'Content-Type': 'application/json'
-      },
+      headers: this._token,
+      // headers: {
+      //   authorization: this._token,
+      //   'Content-Type': 'application/json'
+      // },
       body: JSON.stringify({
 				avatar: item.avatar
       })

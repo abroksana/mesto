@@ -5,6 +5,7 @@ export class Popup {
     this.close = this.close.bind(this);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closeWithClick = this._closeWithClick.bind(this);
+    this._popupButtonSave = this._popup.querySelector('.popup__submit-button')
   }
 
 /* публичный метод open, который отвечает за открытие попапа. */
@@ -39,6 +40,16 @@ export class Popup {
   _closeWithClick(evt) { // closePopup in 7
     if (evt.currentTarget === evt.target) {
       this.close();
+    }
+  }
+
+  loading(loading) {
+    if (loading) {
+      this._popupButtonSave.textContent = 'Сохранение...'
+    } else if (this._popupSelector === '.popup_form-card') {
+        this._popupSave.textContent = 'Создать'
+    } else {
+        this._popupButtonSave.textContent = 'Сохранить'
     }
   }
 }

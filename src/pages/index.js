@@ -2,7 +2,7 @@ import './index.css';
 
 import {
   validationConfig,
-  initialCards,
+  // initialCards,
   profileEditBtn,
   profileName,
   profileActivity,
@@ -11,7 +11,8 @@ import {
   profileForm,
   btnAddNewCard,
   formAddCard,
-  profileAvatar
+  profileAvatar,
+  popupAvatarButton
 } from '../utils/constants.js';
 
 import {Card} from '../components/Card.js';
@@ -37,12 +38,13 @@ const userProfile = new UserInfo({
 /* profileAvatar - '.profile__image' - аватар */
 
 const api = new Api({
-  address: 'https://mesto.nomoreparties.co/v1/cohort-42/cards',
+  address: 'https://mesto.nomoreparties.co/v1/cohort-42',
   token: {
     authorization: 'd94e7cf1-3761-45b6-9798-0ad1da8f2858',
     'Content-Type': 'application/json',
   }
 });
+
 
 /* текущий пользователь */
 let actualUserId;
@@ -114,7 +116,7 @@ const cardsList = new Section({
 }, validationConfig.cardListSelector);
 
 /* попап удаления карточки */
-const popupDeleteCard = new PopupWithConfirm('popup_type_delete'); /* реализовать в html */
+const popupDeleteCard = new PopupWithConfirm('.popup_type_delete'); /*  */
 popupDeleteCard.setEventListeners();
 
 /* новый экземпляр класса PopupWithImage */
@@ -165,6 +167,24 @@ const popupProfileForm = new PopupWithForm({
 popupProfileForm.setEventListeners();
 
 /* попап аватара */
+const popupAvatarUser = new PopupWithForm({
+  popupSelector: '.popup_type_avatar',
+  processFormSubmission: (item) => {
+    popupAvatarUser.loading(true);
+    api.changeUserAvatar(item)
+    .then(result => {
+      userProfile.setUserInfo(result);
+      popupAvatarUser.close();
+    })
+    .catch(err => {
+      console.log(`Ошибка в ходе изменения аватара пользователя: ${err}`)
+    })
+    .finally(() => {
+      popupAvatarUser.loading(false);
+    })
+  }
+});
+popupAvatarUser.setEventListeners();
 
   /* валидация форм */
 const addCardFormValidation = new FormValidator(validationConfig, formAddCard);
@@ -189,3 +209,6 @@ btnAddNewCard.addEventListener('click', () => {
 });
 
 /* кнопка смены аватара */
+popupAvatarButton.addEventListener('click', () => {
+  popupAvatarUser.open();
+});

@@ -9,14 +9,15 @@ class Card {
 
     this._likes = data.likes ?? []; /* лайки карточек, при их отсутствии применять правую часть*/
     this._cardId = data._id; /* id карточки */
-    this._mainId = data.main._id; /* id владельца юзера карточки */
+    this._owner = data.owner;
+    // this._ownerId = data.owner._id; /* id владельца юзера карточки */
     this._actualUserId = actualUserId; /* актуальный пользователь */
-    this.alt = data.name; /* альт карточки */
-    this._deleteCardButton = this._element.querySelector('.element__#'); /* кнопка удаления карточки */
+    this._alt = data.name; /* альт карточки */
+    this._deleteCardButton = this._element.querySelector('.element__btn-trash'); /* кнопка удаления карточки */
     this._placeButtonLike = this._element.querySelector('.element__like-button'); /* кнопка лайка по селектору */
     this._handleLikeClick = handleLikeClick; /* лайк карточки */
     this._actionDeleteCardClick = actionDeleteCardClick; /* удаление карточки */
-    this._likesCounter = this._element.querySelector('.element__#'); /* счетчик лайков */
+    this._likesCounter = this._element.querySelector('.element__like-counter'); /* счетчик лайков */
   };
 
     /* Возврат шаблона карточки из DOM */
@@ -94,10 +95,11 @@ class Card {
 
     /* если карточка моя, показ кнопки удаления */
   _iconCardDeleteIsDisplayed() {
-    if (this._mainId === this._actualUserId) {
-      this._deleteCardButton.classList.add('#');
+    if (this._owner === this._actualUserId) {
+    // if (this._ownerId === this._actualUserId) {
+      this._deleteCardButton.classList.add('cards__delete_type_visible');
     } else {
-      this._deleteCardButton.classList.remove('#');
+      this._deleteCardButton.classList.remove('cards__delete_type_visible');
     }
   }
 

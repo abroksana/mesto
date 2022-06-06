@@ -51,4 +51,5 @@ export const popupCardAdd = document.querySelector('.popup_form-card');
 export const formAddCard = popupCardAdd.querySelector('.popup__container');
 
 export const popupView = document.querySelector('.popup_view-image');
-export const profileAvatar = document.querySelector('.profile__avatar'); // аватар профиля
+export const profileAvatar = document.querySelector('.profile__image'); // аватар профиля
+export const popupAvatarButton = document.querySelector('.profile__avatar');
