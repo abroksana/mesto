@@ -1,5 +1,11 @@
 .profile__avatar {
-  margin: 0 30px 0 0;
+  /* position: relative;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    overflow: hidden; */
+
+  /* margin: 0 30px 0 0;
   padding: 0;
   width: 120px;
   height: 120px;
@@ -9,7 +15,18 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
+  cursor: pointer; */
+  align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    /* justify-content: center; */
+    margin: 0 30px 0 0;
+    padding: 0;
+    position: relative;
+    width: 120px;
 }
 
 .profile__avatar::after {

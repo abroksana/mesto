@@ -12,7 +12,7 @@ export class UserInfo {
   getUserInfo() {
     return {
       name: this._profileName.textContent,
-      about: this._profileActivity.textContent
+      about: this._profileActivity.textContent,
     }
   }
 

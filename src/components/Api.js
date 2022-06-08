@@ -53,7 +53,7 @@ export class Api {
 
   /* редактирование профиля */
   editProfile(item) {
-    return fetch(`${this._address}/user/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
       headers: this._token,
       // headers: {
@@ -62,7 +62,7 @@ export class Api {
       // },
       body: JSON.stringify({
         name: item.name,
-        about: item.description
+        about: item.activity /*['activity'],*/
       })
     })
     .then(this._checkResponse)

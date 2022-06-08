@@ -34,7 +34,7 @@ const userProfile = new UserInfo({
   profileAvatar
 });
 /* profileName - '.profile__title' - имя */
-/* profileActivity - '.profile__description' - о себе */
+/* profileActivity - profile__user-job ('.profile__description') - о себе */
 /* profileAvatar - '.profile__image' - аватар */
 
 const api = new Api({
@@ -124,7 +124,7 @@ const openImagePopup = new PopupWithImage(validationConfig.popupImageSelector);
 openImagePopup.setEventListeners(); // Передаём слушатели событий
 // cardsList.renderItems();
 
-/* попап профиля пользователя */
+/* попап новой карточки */
 const popupAddCardForm = new PopupWithForm({
   popupSelector: '.popup_form-card',
   processFormSubmission: (item) => {
@@ -151,7 +151,7 @@ const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_form-user',
   processFormSubmission: (item) => {
     popupProfileForm.loading(true);
-    api.changeUserAvatar(item)
+    api.editProfile(item)
       .then(result => {
     userProfile.setUserInfo(result);
     popupProfileForm.close();
@@ -196,7 +196,7 @@ profileFormValidation.enableValidation();
 profileEditBtn.addEventListener('click', () => {
   const profile = userProfile.getUserInfo();
   popupPrflFrmName.value = profile.name;
-  popupPrflFrmActiv.value = profile.activity;
+  popupPrflFrmActiv.value = profile.about;
   profileFormValidation.resetValidation();
   popupProfileForm.open();
 });
