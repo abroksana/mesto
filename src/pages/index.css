@@ -1,5 +1,4 @@
 @import url(../vendor/normalize.css);
-@import url(../blocks/page-area/page-area.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -22,6 +21,7 @@
 @import url(../blocks/element/__like-counter/element__like-counter.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__btn-trash/element__btn-trash.css);
+@import url(../blocks/element/__btn-trash/_visible/element__btn-trash_visible.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);

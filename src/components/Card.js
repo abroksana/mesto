@@ -3,21 +3,19 @@ class Card {
     this._name = data.name; /* название карточки */
     this._link = data.link; /* ссылка на изображение */
     this._cardSelector = cardSelector; /* селектор карточки */
-    this._handleCardClick = handleCardClick; /* открытие попапа карточки */
-    this._element = this._getTemplate(); /* запись разметки в поле _element */
-    this._elementImage = this._element.querySelector('.element__image'); /* картинка по селектору */
-
     this._likes = data.likes ?? []; /* лайки карточек, при их отсутствии применять правую часть*/
     this._cardId = data._id; /* id карточки */
-    this._owner = data.owner;
-    // this._ownerId = data.owner._id; /* id владельца юзера карточки */
+    this._ownerId = data.owner._id;
     this._actualUserId = actualUserId; /* актуальный пользователь */
     this._alt = data.name; /* альт карточки */
-    this._deleteCardButton = this._element.querySelector('.element__btn-trash'); /* кнопка удаления карточки */
-    this._placeButtonLike = this._element.querySelector('.element__like-button'); /* кнопка лайка по селектору */
-    this._handleLikeClick = handleLikeClick; /* лайк карточки */
+    this._handleCardClick = handleCardClick; /* открытие попапа карточки */
     this._actionDeleteCardClick = actionDeleteCardClick; /* удаление карточки */
-    this._likesCounter = this._element.querySelector('.element__like-counter'); /* счетчик лайков */
+    this._handleLikeClick = handleLikeClick; /* лайк карточки */
+    this._element = this._getTemplate(); /* запись разметки в поле _element */
+    this._elementImage = this._element.querySelector('.element__image'); /* картинка по селектору */
+    this._placeButtonLike = this._element.querySelector('.element__like-button'); /* кнопка лайка по селектору */
+    this._deleteCardButton = this._element.querySelector('.element__btn-trash'); /* кнопка удаления карточки */
+    this._likeCounter = this._element.querySelector('.element__like-counter'); /* счетчик лайков */
   };
 
     /* Возврат шаблона карточки из DOM */
@@ -46,15 +44,14 @@ class Card {
     this._deleteCardButton.addEventListener('click', () => {
       this._actionDeleteCardClick(this);
     });
-    // this._element.querySelector('.element__btn-trash').addEventListener('click', () => {
-    //   this._deleteClickHandler();
-    // }); /* удаление карточки - _deleteCardButton */
 
-    this._placeButtonLike.addEventListener('click', this._likeClickHandler); /* лайк карточки */
+    this._placeButtonLike.addEventListener('click', () => {
+			this._handleLikeClick(this);
+		}); /* лайк карточки */
 
     this._elementImage.addEventListener('click', () => {
       this._openPopupWithImage();
-    }); /* открытие попапа карточки */
+    }); /* открытие попапа карточки _likeClickHandler*/
   };
 
   /* проверка лайков */
@@ -64,7 +61,7 @@ class Card {
 
   /* обновление лайков */
   upgradeLikes() {
-    this._likesCounter.textContent = this._likes.length;
+    this._likeCounter.textContent = this._likes.length;
     if (this.whenLiked()) {
       this._placeButtonLike.classList.add('element__like-button_active');
     } else {
@@ -78,13 +75,6 @@ class Card {
     this.upgradeLikes();
   }
 
-  //   /* от 8й работы Удаление и удаление на кнопке лайк */
-  // _likeClickHandler = () => {
-  //   this._placeButtonLike.classList.toggle('element__like-button_active');
-  // };
-
-
-
   /* открытие попапа с карточкой */
   _openPopupWithImage() {
     this._handleCardClick(
@@ -93,18 +83,17 @@ class Card {
     )
   }
 
-    /* если карточка моя, показ кнопки удаления */
+    /* если карточка моя, показ кнопки удаления element__btn-trash_visible */
   _iconCardDeleteIsDisplayed() {
-    if (this._owner === this._actualUserId) {
-    // if (this._ownerId === this._actualUserId) {
-      this._deleteCardButton.classList.add('cards__delete_type_visible');
+    if (this._ownerId === this._actualUserId) {
+      this._deleteCardButton.classList.add('element__btn-trash_visible');
     } else {
-      this._deleteCardButton.classList.remove('cards__delete_type_visible');
+      this._deleteCardButton.classList.remove('element__btn-trash_visible');
     }
   }
 
   /* Удаление карточки */
-  deleteClickHandler() {
+  deleteCard() {
     this._element.remove();
     this._element = null;
   };

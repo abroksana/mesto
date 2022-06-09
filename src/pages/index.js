@@ -12,7 +12,8 @@ import {
   btnAddNewCard,
   formAddCard,
   profileAvatar,
-  popupAvatarButton
+  popupAvatarButton,
+  editAvatarForm
 } from '../utils/constants.js';
 
 import {Card} from '../components/Card.js';
@@ -27,15 +28,11 @@ import {UserInfo} from '../components/UserInfo.js';
 import {Api} from '../components/Api.js';
 
   /* профиль юзера */
-// const userProfile = new UserInfo({profileName, profileActivity});
 const userProfile = new UserInfo({
   profileName,
   profileActivity,
   profileAvatar
 });
-/* profileName - '.profile__title' - имя */
-/* profileActivity - profile__user-job ('.profile__description') - о себе */
-/* profileAvatar - '.profile__image' - аватар */
 
 const api = new Api({
   address: 'https://mesto.nomoreparties.co/v1/cohort-42',
@@ -70,10 +67,11 @@ const createCard = (item) => {
       handleCardClick: () => {
         openImagePopup.open(item.name, item.link);
       },
+
   actionDeleteCardClick: (card) => {
-    popupDeleteCard.open(); /* еще не реализовано */
+    popupDeleteCard.open(); /*  */
     popupDeleteCard.setSubmitCallback(() => {
-      api.deleteCard(card.cardId()) /* deleteCard и cardId еще не найдено */
+      api.deleteCard(card.cardId()) /*  */
         .then(() => {
           card.deleteCard();
           popupDeleteCard.close();
@@ -86,7 +84,7 @@ const createCard = (item) => {
     /* лайк карточки */
     handleLikeClick: (card) => {
       if (card.whenLiked()) {
-        api.removelike(card.cardId())
+        api.removeLike(card.cardId())
         .then((data) => {
           card.discoverLikesInfo(data.likes);
         })
@@ -122,13 +120,13 @@ popupDeleteCard.setEventListeners();
 /* новый экземпляр класса PopupWithImage */
 const openImagePopup = new PopupWithImage(validationConfig.popupImageSelector);
 openImagePopup.setEventListeners(); // Передаём слушатели событий
-// cardsList.renderItems();
+
 
 /* попап новой карточки */
 const popupAddCardForm = new PopupWithForm({
   popupSelector: '.popup_form-card',
   processFormSubmission: (item) => {
-    // cardsList.prependItem(createCard(item));
+
   popupAddCardForm.loading(true);
   api.addNewCard(item)
     .then(result => {
@@ -189,8 +187,11 @@ popupAvatarUser.setEventListeners();
   /* валидация форм */
 const addCardFormValidation = new FormValidator(validationConfig, formAddCard);
 const profileFormValidation = new FormValidator(validationConfig, profileForm);
+const profileAvatarValidation = new FormValidator(validationConfig, editAvatarForm);
+
 addCardFormValidation.enableValidation();
 profileFormValidation.enableValidation();
+profileAvatarValidation.enableValidation();
 
 /* открытие редактирования профиля */
 profileEditBtn.addEventListener('click', () => {

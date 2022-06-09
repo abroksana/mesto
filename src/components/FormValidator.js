@@ -10,6 +10,7 @@ export class FormValidator {
     this._buttonElement = this._form.querySelector(this._buttonSubmitClass);
   };
 
+  /* показ ошибок */
   _showInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     errorElement.classList.add(this._activeErrorClass); // Делаем ошибку видимой
@@ -17,7 +18,7 @@ export class FormValidator {
     inputElement.classList.add(this._inputErrorClass); // Добавляем класс невалидного инпута
   };
 
-  // Функция, которая удаляет класс с ошибкой
+  /* сокрытие ошибок */
   _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     errorElement.classList.remove(this._activeErrorClass);
@@ -25,13 +26,14 @@ export class FormValidator {
     inputElement.classList.remove(this._inputErrorClass); // Удаляем класс невалидного инпута
   };
 
+  /* проверка полей на валидацию */
   _hasInvalidInput() {
-    return this._inputList.some(function (inputElement) {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };
 
-        // Функция проверяющая валидность поля ввода
+  /* Функция проверяющая валидность поля ввода */
   _checkInputValidity(inputElement) {
       // проверяем если не валидно запускаем показ ошибки, если валидно убираем
     if (!inputElement.validity.valid) {
@@ -41,6 +43,7 @@ export class FormValidator {
     }
   };
 
+  /* обработка форм */
   _setEventListeners() {
     this.toggleButtonState();
     // обходим все поля ввода и вешаем на них слушатели
@@ -52,6 +55,7 @@ export class FormValidator {
     });
   };
 
+  /* деактивация кнопок если проверка не пройдена */
   toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.disabled = true;
@@ -62,6 +66,7 @@ export class FormValidator {
     }
   }
 
+  /* включение валидации */
 	enableValidation() {
 		this._form.addEventListener('submit', evt => {
 			evt.preventDefault();
@@ -69,6 +74,7 @@ export class FormValidator {
 		this._setEventListeners();
 	}
 
+  /* метод очистки ошибок */
   resetValidation() {
     this.toggleButtonState();
     this._inputList.forEach((inputElement) => {

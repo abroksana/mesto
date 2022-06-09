@@ -21,8 +21,6 @@ export class UserInfo {
     this._profileName.textContent = item.name;
     this._profileActivity.textContent = item.about;
     this._profileAvatar.src = item.avatar;
-    // this._popupPrflFrmName.textContent = name;
-    // this._popupPrflFrmActiv.textContent = activity;
 
   }
 }

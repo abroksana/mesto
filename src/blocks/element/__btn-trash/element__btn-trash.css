@@ -9,6 +9,7 @@
   background: url(../../../images/btn-trash.svg) center no-repeat;
   background-size: cover;
   cursor: pointer;
+  display: none;
 }
 
 .element__btn-trash:hover {
