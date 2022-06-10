@@ -127,7 +127,7 @@ const popupAddCardForm = new PopupWithForm({
   popupSelector: '.popup_form-card',
   processFormSubmission: (item) => {
 
-  popupAddCardForm.loading(true, 'Создать');
+  popupAddCardForm.loading(true, 'Сохранение...');
   api.addNewCard(item)
     .then(result => {
       cardsList.prependItem(createCard(result));
@@ -137,7 +137,7 @@ const popupAddCardForm = new PopupWithForm({
       console.log(`Ошибка при добавления карточки: ${err}`)
     })
     .finally(() => {
-      popupAddCardForm.loading(false);
+      popupAddCardForm.loading(false, 'Создать');
     })
   }
 })
@@ -148,7 +148,7 @@ popupAddCardForm.setEventListeners();
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_form-user',
   processFormSubmission: (item) => {
-    popupProfileForm.loading(true, 'Сохранить');
+    popupProfileForm.loading(true, 'Сохранение...');
     api.editProfile(item)
       .then(result => {
     userProfile.setUserInfo(result);
@@ -158,7 +158,7 @@ const popupProfileForm = new PopupWithForm({
         console.log(`Ошибка в профиле пользователя: ${err}`);
       })
       .finally(() => {
-        popupProfileForm.loading(false);
+        popupProfileForm.loading(false, 'Сохранить');
       })
   }
 });
@@ -168,7 +168,7 @@ popupProfileForm.setEventListeners();
 const popupAvatarUser = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
   processFormSubmission: (item) => {
-    popupAvatarUser.loading(true, 'Сохранить');
+    popupAvatarUser.loading(true, 'Сохранение...');
     api.changeUserAvatar(item)
     .then(result => {
       userProfile.setUserInfo(result);
@@ -178,7 +178,7 @@ const popupAvatarUser = new PopupWithForm({
       console.log(`Ошибка в ходе изменения аватара пользователя: ${err}`)
     })
     .finally(() => {
-      popupAvatarUser.loading(false);
+      popupAvatarUser.loading(false, 'Сохранить');
     })
   }
 });
@@ -211,5 +211,7 @@ btnAddNewCard.addEventListener('click', () => {
 
 /* кнопка смены аватара */
 popupAvatarButton.addEventListener('click', () => {
+  profileAvatarValidation.toggleButtonState();
+  profileAvatarValidation.resetValidation();
   popupAvatarUser.open();
 });
