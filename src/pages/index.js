@@ -127,7 +127,7 @@ const popupAddCardForm = new PopupWithForm({
   popupSelector: '.popup_form-card',
   processFormSubmission: (item) => {
 
-  popupAddCardForm.loading(true);
+  popupAddCardForm.loading(true, 'Создать');
   api.addNewCard(item)
     .then(result => {
       cardsList.prependItem(createCard(result));
@@ -148,7 +148,7 @@ popupAddCardForm.setEventListeners();
 const popupProfileForm = new PopupWithForm({
   popupSelector: '.popup_form-user',
   processFormSubmission: (item) => {
-    popupProfileForm.loading(true);
+    popupProfileForm.loading(true, 'Сохранить');
     api.editProfile(item)
       .then(result => {
     userProfile.setUserInfo(result);
@@ -168,7 +168,7 @@ popupProfileForm.setEventListeners();
 const popupAvatarUser = new PopupWithForm({
   popupSelector: '.popup_type_avatar',
   processFormSubmission: (item) => {
-    popupAvatarUser.loading(true);
+    popupAvatarUser.loading(true, 'Сохранить');
     api.changeUserAvatar(item)
     .then(result => {
       userProfile.setUserInfo(result);

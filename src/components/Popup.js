@@ -43,13 +43,11 @@ export class Popup {
     }
   }
 
-  loading(loading) {
+  loading(loading, text) {
     if (loading) {
-      this._popupButtonSave.textContent = 'Сохранение...'
-    } else if (this._popupSelector === '.popup_form-card') {
-        this._popupSave.textContent = 'Создать'
+      this._popupButtonSave.textContent = 'Сохранение...';
     } else {
-        this._popupButtonSave.textContent = 'Сохранить'
+      this._popupButtonSave.textContent = text;
     }
   }
 }
